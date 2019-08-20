@@ -26,7 +26,8 @@ map <C-A> ggVGY
 map! <C-A> <Esc>ggVGY
 
 set expandtab
-set tabstop=8
+set tabstop=4
+set shiftwidth=4
 set nosmartindent
 set noautoindent
 set nocindent
