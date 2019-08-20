@@ -25,7 +25,8 @@ nmap <leader>f :find<cr>
 map <C-A> ggVGY
 map! <C-A> <Esc>ggVGY
 
-"set autoindent
+set tabstop=4
+set noautoindent
 "set cindent
 set hlsearch
 set backspace=indent,eol,start
