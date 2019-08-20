@@ -1,6 +1,6 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 call vundle#end()
@@ -25,12 +25,16 @@ nmap <leader>f :find<cr>
 map <C-A> ggVGY
 map! <C-A> <Esc>ggVGY
 
-set tabstop=4
+set expandtab
+set tabstop=8
+set nosmartindent
 set noautoindent
-"set cindent
+set nocindent
 set hlsearch
+set incsearch
 set backspace=indent,eol,start
 set nu
+set showmatch
 
 set cursorline
 "set cursorcolumn
