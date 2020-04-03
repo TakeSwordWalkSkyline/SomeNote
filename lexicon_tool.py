@@ -109,7 +109,8 @@ if __name__ == "__main__":
                                     if not is_exist:
                                         write_flag = True
                             else:
-                                pass
+                                if (value_list[0].find(v_list[0]) == -1):
+                                    write_flag = True
                         #else:
                         #   write_flag = True
         if write_flag:
