@@ -61,7 +61,6 @@ keyword id and keyword case number.
 # map between keyword id and keyword string
 # map between keyword id and keyword case number
 keywords, total = collect_word(caselist)
-
 def tokentype(line):
     if re.match(log_r, line):
         return 'LOG'
@@ -218,8 +217,12 @@ for threshold in seq:
                 jw_rst = []
             jn_number = count_if_larger(jn_rst, threshold)
             jw_number = count_if_larger(jw_rst, threshold)
-            one = (threshold, jw_number / 51.37,
-                   1 - float(jn_number) / total[k])
+            #one = (threshold, jw_number / 75.00,
+            #       1 - float(jn_number) / total[k], jn_number, total[k], jw_number, 75.00) #chn
+            #one = (threshold, jw_number / 63.91,
+            #       1 - float(jn_number) / total[k], jn_number, total[k], jw_number, 63.91) #eng
+            one = (threshold, jw_number / 64.21,
+                   1 - float(jn_number) / total[k], jn_number, total[k], jw_number, 64.21) #yue
             if k in roc:
                 roc[k].append(one)
             else:
@@ -231,15 +234,20 @@ cell_format1.set_border()
 cell_format3 = workbook.add_format()
 cell_format3.set_border()
 cell_format3.set_num_format('0.00%')
-line_format = [cell_format1, cell_format1, cell_format3]
+line_format = [cell_format1, cell_format1, cell_format3, cell_format1, cell_format1, cell_format1, cell_format1]
 
 for k, v in roc.iteritems():
     name = keywords[k]
+    print(name)
     worksheet = workbook.add_worksheet(name)
     row = 0
     worksheet.write(row, 0, u'阈值', cell_format1)
     worksheet.write(row, 1, u'FA', cell_format1)
     worksheet.write(row, 2, u'FR', cell_format1)
+    worksheet.write(row, 3, u'jn_number', cell_format1)
+    worksheet.write(row, 4, u'jn_total', cell_format1)
+    worksheet.write(row, 5, u'jw_number', cell_format1)
+    worksheet.write(row, 6, u'jw_total', cell_format1)
     row += 1
     for tup in v:
         col = 0
