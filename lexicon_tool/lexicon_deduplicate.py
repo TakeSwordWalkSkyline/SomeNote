@@ -39,8 +39,22 @@ if __name__ == "__main__":
     lex1 = open(argv[1], 'r')
     lex2 = open(argv[2], 'r')
     lex3 = open('./lexicon_output.txt', 'w')
+    print "start to read lex1"
     readlexicon(lex1, dict1)
+    print "read lex1 done!"
+    print "start to read lex2"
     readlexicon(lex2, dict2)
+    print "read lex2 done!"
+    # for key in dict1:
+    #     print "=====dict1====="
+    #     print "key:%s" % key
+    #     print dict1[key]
+    #     print "=====end====="
+    # for key in dict2:
+    #     print "=====dict2====="
+    #     print "key:%s" % key
+    #     print dict2[key]
+    #     print "=====end====="
     for key in dict2.keys():
         if key in dict1.keys():
             dict1_value = dict1[key]
@@ -49,6 +63,10 @@ if __name__ == "__main__":
                 if value not in dict1_value:
                     buffer = "%s;2;%s\n" % (key, value)
                     lex3.write(buffer)
+        else:
+            for value in dict2[key]:
+                buffer = "%s;2;%s\n" % (key, value)
+                lex3.write(buffer)
 
                 
     lex1.close()
