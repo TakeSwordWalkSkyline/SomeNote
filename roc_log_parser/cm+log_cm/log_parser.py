@@ -215,6 +215,7 @@ seq = seq2
 
 roc = {}
 for threshold in seq:
+    real_threshold = threshold * ( 1 + (5 - 6.0) / 8.0) #与唤醒level为5且dynamic_level为off时保持一致
     for jn_dict in jn_results:
         for k, v in jn_dict.iteritems():
             # both jn_rst and jw_rst is a vector
@@ -223,8 +224,8 @@ for threshold in seq:
                 jw_rst = jw_results[0][k]
             else:
                 jw_rst = []
-            jn_number = count_if_larger(jn_rst, threshold)
-            jw_number = count_if_larger(jw_rst, threshold)
+            jn_number = count_if_larger(jn_rst, real_threshold)
+            jw_number = count_if_larger(jw_rst, real_threshold)
             #one = (threshold, jw_number / 75.00,
             #       1 - float(jn_number) / total[k], jn_number, total[k], jw_number, 75.00) #chn
             #one = (threshold, jw_number / 63.91,
