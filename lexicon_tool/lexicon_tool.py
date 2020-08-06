@@ -6,6 +6,9 @@ import os
 import time
 
 if __name__ == "__main__":
+    if (len(argv) == 1):
+        print('Usage:%s -l [lexicon]' % argv[0])
+        sys.exit()
     for arg in argv[1:]:
         if arg == '-l':
             break
@@ -111,8 +114,8 @@ if __name__ == "__main__":
                             else:
                                 if (value_list[0].find(v_list[0]) == -1):
                                     write_flag = True
-                        #else:
-                        #   write_flag = True
+                        else:
+                            write_flag = True
         if write_flag:
             #print('write line: %s' % line)
             new_lex.write(line + '\n')
